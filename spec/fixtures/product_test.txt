@@ -1,0 +1,1 @@
+{"product_name":"Canon_PowerShot_SD1300_IS","manufacturer":"Canon","model":"SD1300IS","family":"PowerShot","announced-date":"2010-02-07T19:00:00.000-05:00"}
