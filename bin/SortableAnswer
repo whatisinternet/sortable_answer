@@ -5,14 +5,12 @@ require 'sortable_answer'
 def main
 
   if ARGV[0].nil? || ARGV[1].nil?
-    puts "ERROR:\n You need to specify the files.\n usage:\n SortableAnswer
-file1.txt file2.txt \n To output to file SortableAnswer file1.txt file2.txt |
->file3.txt"
+    puts "ERROR:\n\n       You need to specify the files.\n\n\n      usage:\n SortableAnswer file1.txt file2.txt \n\n To output to file SortableAnswer file1.txt file2.txt |>file3.txt\n\n"
     exit(-1)
   else
     sortable = SortableAnswer::Answer.new("#{Dir.pwd}/#{ARGV[0].to_s}", "#{Dir.pwd}/#{ARGV[1].to_s}" )
     sortable.find_all_matches
-    sortable.jsonfiy
+    puts sortable.jsonfiy
   end
 
 end
