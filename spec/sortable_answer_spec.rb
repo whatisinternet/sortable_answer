@@ -67,6 +67,14 @@ describe SortableAnswer do
     end
   end
 
+  describe "equal_product" do
+    it "should return a truthy value" do
+      test_product = @sortable.hashify(@sortable.products)[0]
+      test_data = @sortable.hashify(@sortable.listings)[0]
+      expect(@sortable.eqal_product(test_product, test_data)).to_not be_nil
+    end
+  end
+
   describe "product_matcher" do
     it "should return an array of all matches" do
       test_product = @sortable.hashify(@sortable.products)[0]
