@@ -59,11 +59,19 @@ describe SortableAnswer do
     end
   end
 
+  describe "make_title_match" do
+    it "should match make" do
+      test_product = @sortable.hashify(@sortable.products)[0]
+      test_data = @sortable.hashify(@sortable.listings)[0]
+      expect(@sortable.make_title_match(test_product, test_data)).to be_a(MatchData)
+    end
+  end
+
   describe "make_match" do
     it "should match make" do
       test_product = @sortable.hashify(@sortable.products)[0]
       test_data = @sortable.hashify(@sortable.listings)[0]
-      expect(@sortable.model_match(test_product, test_data)).to be_a(MatchData)
+      expect(@sortable.make_match(test_product, test_data)).to be_a(MatchData)
     end
   end
 

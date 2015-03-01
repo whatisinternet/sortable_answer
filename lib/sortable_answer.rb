@@ -29,7 +29,7 @@ module SortableAnswer
 
 
     def model_match(product_hash, challenge_hash)
-       make_regex(product_hash["model"]).match(challenge_hash["title"])
+      /\b#{product_hash["model"]}/io.match(challenge_hash["title"])
     end
 
     def eqal_product(product_hash, challenge_hash)
