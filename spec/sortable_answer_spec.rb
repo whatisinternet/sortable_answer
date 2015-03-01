@@ -55,7 +55,7 @@ describe SortableAnswer do
     it "should match model" do
       test_product = @sortable.hashify(@sortable.products)[0]
       test_data = @sortable.hashify(@sortable.listings)[0]
-      expect(@sortable.model_match(test_product, test_data)).to be_a(MatchData)
+      expect(@sortable.model_match(test_product, test_data)).to be_a(Integer)
     end
   end
 
@@ -76,10 +76,10 @@ describe SortableAnswer do
   end
 
   describe "equal_product" do
-    it "should return a truthy value" do
+    it "should return a falsy value" do
       test_product = @sortable.hashify(@sortable.products)[0]
       test_data = @sortable.hashify(@sortable.listings)[0]
-      expect(@sortable.eqal_product(test_product, test_data)).to  be_nil
+      expect(@sortable.eqal_product(test_product, test_data)).to  be_falsy
     end
   end
 
@@ -89,7 +89,7 @@ describe SortableAnswer do
       test_data = @sortable.hashify(@sortable.listings)[0]
       expect(@sortable.product_matcher(test_product, test_data)).to equal(test_data)
     end
-    #This test is brittle. 
+    #This test is brittle.
     it "should return an array of all matches" do
       test_product = @sortable.hashify(@sortable.products)[0]
       test_product["model"] = "fake"

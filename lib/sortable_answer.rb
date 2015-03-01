@@ -27,18 +27,23 @@ module SortableAnswer
        make_regex(product_hash["manufacturer"]).match(challenge_hash["manufacturer"])
     end
 
-
     def model_match(product_hash, challenge_hash)
-      /#{product_hash["model"]}/io.match(challenge_hash["title"])
+      if product_hash["model"].length <= 4
+      Regexp.new("\b#{product_hash["model"]}\b\s*", Regexp::EXTENDED | Regexp::IGNORECASE) =~ challenge_hash["title"]
+
+      else
+        Regexp.new("#{product_hash["model"]}", Regexp::EXTENDED | Regexp::IGNORECASE) =~ challenge_hash["title"]
+      end
     end
 
     def eqal_product(product_hash, challenge_hash)
-      /#{product_hash["product_name"].downcase.tr('_', ' ')}/io.match(challenge_hash["title"].downcase)
+     "#{product_hash["product_name"].downcase.tr('_', ' ')}" == challenge_hash["title"].downcase
+     #/\b#{product_hash["manufacturer"].downcase}\b\s\w*.\s\b#{product_hash["model"].downcase}\b/io.match(challenge_hash["title"])
     end
 
     def product_matcher(product_hash, challenge_hash)
       if make_match(product_hash, challenge_hash)
-        if make_match(product_hash, challenge_hash) && 
+        if make_title_match(product_hash, challenge_hash) && 
           model_match(product_hash, challenge_hash)
           return challenge_hash
         elsif eqal_product(product_hash, challenge_hash)
