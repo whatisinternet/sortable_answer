@@ -79,7 +79,7 @@ describe SortableAnswer do
     it "should return a truthy value" do
       test_product = @sortable.hashify(@sortable.products)[0]
       test_data = @sortable.hashify(@sortable.listings)[0]
-      expect(@sortable.eqal_product(test_product, test_data)).to_not be_nil
+      expect(@sortable.eqal_product(test_product, test_data)).to  be_nil
     end
   end
 

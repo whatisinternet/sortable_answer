@@ -29,11 +29,11 @@ module SortableAnswer
 
 
     def model_match(product_hash, challenge_hash)
-      /\b#{product_hash["model"]}/io.match(challenge_hash["title"])
+      /#{product_hash["model"]}/io.match(challenge_hash["title"])
     end
 
     def eqal_product(product_hash, challenge_hash)
-      product_hash["product_name"].downcase.tr('_', ' ') == challenge_hash["title"].downcase
+      /#{product_hash["product_name"].downcase.tr('_', ' ')}/io.match(challenge_hash["title"].downcase)
     end
 
     def product_matcher(product_hash, challenge_hash)
