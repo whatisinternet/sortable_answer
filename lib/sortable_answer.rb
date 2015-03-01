@@ -12,11 +12,7 @@ module SortableAnswer
     end
 
     def hashify(json)
-      out = []
-      json.each do |j|
-        out.push(JSON.parse(j))
-      end
-      out
+      json.map { |j| JSON.parse(j) }
     end
 
     def make_regex(str)
@@ -32,7 +28,7 @@ module SortableAnswer
     end
 
     def eqal_product(product_hash, challenge_hash)
-      product_hash["product_name"].downcase.gsub('_', ' ') == challenge_hash["title"].downcase
+      product_hash["product_name"].downcase.tr('_', ' ') == challenge_hash["title"].downcase
     end
 
     def product_matcher(product_hash, challenge_hash)
@@ -47,9 +43,9 @@ module SortableAnswer
 
     def find_product_match(product, listings)
         products_and_listings = {product_name: product["product_name"], listings: []}
-        listings.each do |listing|
+        products_and_listings[:listings] = listings.map do |listing|
           match = product_matcher(product, listing)
-          products_and_listings[:listings].push(match) unless match.nil?
+          match unless match.nil?
         end
         products_and_listings
     end
@@ -57,8 +53,8 @@ module SortableAnswer
     def find_all_matches
       products = hashify(self.products)
       listings = hashify(self.listings)
-      products.each do |product|
-        self.matches.push(find_product_match(product, listings))
+      self.matches = products.map do |product|
+        find_product_match(product, listings)
       end
     end
 
@@ -71,4 +67,5 @@ module SortableAnswer
     end
 
   end
+
 end
