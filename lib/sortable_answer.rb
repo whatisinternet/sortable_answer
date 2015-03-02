@@ -29,10 +29,10 @@ module SortableAnswer
 
     def model_match(product_hash, challenge_hash)
       if product_hash["model"].length <= 4
-      Regexp.new("\b#{product_hash["model"]}\b\s*", Regexp::EXTENDED | Regexp::IGNORECASE) =~ challenge_hash["title"]
+        Regexp.new("\b#{product_hash["model"]}[[:space:]|[:alpha:]|\"]", Regexp::EXTENDED | Regexp::IGNORECASE) =~ challenge_hash["title"]
 
       else
-        Regexp.new("#{product_hash["model"]}", Regexp::EXTENDED | Regexp::IGNORECASE) =~ challenge_hash["title"]
+        Regexp.new("#{product_hash["model"]}[[:space:]|[:alpha:]|\"]", Regexp::EXTENDED | Regexp::IGNORECASE) =~ challenge_hash["title"]
       end
     end
 
