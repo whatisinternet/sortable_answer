@@ -30,7 +30,6 @@ module SortableAnswer
     def model_match(product_hash, challenge_hash)
       if product_hash["model"].length <= 4
         Regexp.new("\b#{product_hash["model"]}[[:space:]|[:alpha:]|\"]", Regexp::EXTENDED | Regexp::IGNORECASE) =~ challenge_hash["title"]
-
       else
         Regexp.new("#{product_hash["model"]}[[:space:]|[:alpha:]|\"]", Regexp::EXTENDED | Regexp::IGNORECASE) =~ challenge_hash["title"]
       end
@@ -38,7 +37,6 @@ module SortableAnswer
 
     def eqal_product(product_hash, challenge_hash)
      "#{product_hash["product_name"].downcase.tr('_', ' ')}" == challenge_hash["title"].downcase
-     #/\b#{product_hash["manufacturer"].downcase}\b\s\w*.\s\b#{product_hash["model"].downcase}\b/io.match(challenge_hash["title"])
     end
 
     def product_matcher(product_hash, challenge_hash)

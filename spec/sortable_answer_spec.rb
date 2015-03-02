@@ -52,11 +52,18 @@ describe SortableAnswer do
   end
 
   describe "model_match" do
-    it "should match model" do
+    it "should match model > 4" do
       test_product = @sortable.hashify(@sortable.products)[0]
       test_data = @sortable.hashify(@sortable.listings)[0]
       expect(@sortable.model_match(test_product, test_data)).to be_a(Integer)
     end
+    it "should match model len <= 4" do
+      test_product = @sortable.hashify(@sortable.products)[0]
+      test_product["model"] = test_product["model"][0..2]
+      test_data = @sortable.hashify(@sortable.listings)[0]
+      expect(@sortable.model_match(test_product, test_data)).to be_nil
+    end
+
   end
 
   describe "make_title_match" do
