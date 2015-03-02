@@ -1,6 +1,6 @@
 # SortableAnswer
 
-[![Gem Version](https://badge.fury.io/rb/SortableAnswer.svg)](http://badge.fury.io/rb/SortableAnswer)
+[![Gem Version](https://badge.fury.io/rb/sortable_answer.svg)](http://badge.fury.io/rb/sortable_answer)
 [![Build Status](https://travis-ci.org/whatisinternet/sortable_answer.svg?branch=master)](https://travis-ci.org/whatisinternet/sortable_answer)
 [![Code Climate](https://codeclimate.com/github/whatisinternet/sortable_answer/badges/gpa.svg)](https://codeclimate.com/github/whatisinternet/sortable_answer)
 [![Test Coverage](https://codeclimate.com/github/whatisinternet/sortable_answer/badges/coverage.svg)](https://codeclimate.com/github/whatisinternet/sortable_answer)
